@@ -9,23 +9,12 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import { TemplateEntryField } from '../interfaces/template';
 import TemplatePreview from '../components/TemplatePreview';
+import EnterImageUrl from '../components/EnterImageUrl';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   // root: {},
-  inputImageUrlOuter: {
-    paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(1),
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    '& > .MuiBox-root': {
-      paddingLeft: theme.spacing(1)
-    }
-  },
   previewOuter: { minHeight: '30vh' }
 }));
 
@@ -35,7 +24,6 @@ const IndexPage = ({
   allPostsData: TemplateEntryField[];
 }) => {
   const classes = useStyles();
-  const [inputValue, setInputValue] = useState('');
   const [imageUrl, setImageUrl] = useState('');
 
   return (
@@ -43,37 +31,7 @@ const IndexPage = ({
       <Container max-width="md">
         <Box>
           <Box py={1}>
-            <Box className={classes.inputImageUrlOuter}>
-              <TextField
-                label="Enter image url"
-                fullWidth
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-              />
-              <Box>
-                <Button
-                  variant="contained"
-                  disableElevation={true}
-                  color="primary"
-                  onClick={() => setImageUrl(inputValue)}
-                >
-                  Enter
-                </Button>
-              </Box>
-              <Box>
-                <Button
-                  variant="contained"
-                  disableElevation={true}
-                  color="default"
-                  onClick={() => {
-                    setInputValue('');
-                    setImageUrl('');
-                  }}
-                >
-                  Clear
-                </Button>
-              </Box>
-            </Box>
+            <EnterImageUrl onEnter={({ value }) => setImageUrl(value)} />
           </Box>
           <Box>
             {allPostsData.map((v) => (
