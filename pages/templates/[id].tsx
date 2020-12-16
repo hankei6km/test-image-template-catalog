@@ -36,7 +36,7 @@ export default function Post({
               }
             />
             <CardContent>
-              <TemplatePreview template={postData.template} />
+              <TemplatePreview template={postData.template} imageUrl={''} />
             </CardContent>
           </Card>
           <Box>
