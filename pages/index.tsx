@@ -35,7 +35,7 @@ const IndexPage = ({
           </Box>
           <Box>
             {allPostsData.map((v) => (
-              <Box>
+              <Box key={v.id}>
                 <Card elevation={1}>
                   <CardHeader
                     titleTypographyProps={{ variant: 'body2' }}
