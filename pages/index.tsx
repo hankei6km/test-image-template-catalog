@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { getSortedTemplatesData } from '../lib/templates';
 import { GetStaticProps } from 'next';
 import { makeStyles } from '@material-ui/core/styles';
@@ -10,6 +11,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import Box from '@material-ui/core/Box';
 import { TemplateEntryField } from '../interfaces/template';
 import TemplatePreview from '../components/TemplatePreview';
+import EnterImageUrl from '../components/EnterImageUrl';
 
 const useStyles = makeStyles(() => ({
   // root: {},
@@ -22,24 +24,36 @@ const IndexPage = ({
   allPostsData: TemplateEntryField[];
 }) => {
   const classes = useStyles();
+  const [imageUrl, setImageUrl] = useState('');
+
   return (
     <Layout title="Home" home>
       <Container max-width="md">
-        {allPostsData.map((v) => (
-          <Box>
-            <Card elevation={0}>
-              <CardHeader
-                titleTypographyProps={{ variant: 'body2' }}
-                title={v.label}
-              />
-              <CardActionArea component={Link} href={`templates/${v.id}`}>
-                <Box className={classes.previewOuter}>
-                  <TemplatePreview template={v.template} />
-                </Box>
-              </CardActionArea>
-            </Card>
+        <Box>
+          <Box py={1}>
+            <EnterImageUrl onEnter={({ value }) => setImageUrl(value)} />
           </Box>
-        ))}
+          <Box>
+            {allPostsData.map((v) => (
+              <Box>
+                <Card elevation={1}>
+                  <CardHeader
+                    titleTypographyProps={{ variant: 'body2' }}
+                    title={v.label}
+                  />
+                  <CardActionArea component={Link} href={`templates/${v.id}`}>
+                    <Box className={classes.previewOuter}>
+                      <TemplatePreview
+                        template={v.template}
+                        imageUrl={imageUrl}
+                      />
+                    </Box>
+                  </CardActionArea>
+                </Card>
+              </Box>
+            ))}
+          </Box>
+        </Box>
       </Container>
     </Layout>
   );

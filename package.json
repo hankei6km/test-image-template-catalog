@@ -10,7 +10,9 @@
   "dependencies": {
     "@material-ui/core": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.57",
+    "@types/cheerio": "^0.22.23",
     "@types/node-fetch": "^2.5.7",
+    "cheerio": "^1.0.0-rc.3",
     "next": "latest",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
