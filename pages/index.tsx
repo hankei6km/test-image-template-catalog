@@ -41,7 +41,7 @@ const IndexPage = ({
                     titleTypographyProps={{ variant: 'body2' }}
                     title={v.label}
                   />
-                  <CardActionArea component={Link} href={`templates/${v.id}`}>
+                  <CardActionArea component={Link} href={`/templates/${v.id}`}>
                     <Box className={classes.previewOuter}>
                       <TemplatePreview
                         template={v.template}
