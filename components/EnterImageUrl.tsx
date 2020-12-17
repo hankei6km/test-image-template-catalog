@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles((theme) => ({
-  inputImageUrlOuter: {
+  root: {
     paddingTop: theme.spacing(1),
     paddingBottom: theme.spacing(1),
     display: 'flex',
@@ -32,7 +32,7 @@ const EnterImageUrl = ({
     onEnter({ value: imageUrl });
   }, [onEnter, imageUrl]);
   return (
-    <Box className={classes.inputImageUrlOuter}>
+    <Box className={classes.root}>
       <TextField
         label="Enter image url"
         fullWidth
@@ -45,16 +45,6 @@ const EnterImageUrl = ({
           }
         }}
       />
-      <Box>
-        <Button
-          variant="contained"
-          disableElevation={true}
-          color="primary"
-          onClick={() => setImageUrl(inputValue)}
-        >
-          Enter
-        </Button>
-      </Box>
       <Box>
         <Button
           variant="contained"
