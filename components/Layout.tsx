@@ -70,7 +70,7 @@ const Layout = ({
               >
                 <Box>
                   <Typography variant="body1" color="textPrimary">
-                    Image Template Catalog
+                    {`${process.env.APP_NAME}`}
                   </Typography>
                 </Box>
               </Button>
