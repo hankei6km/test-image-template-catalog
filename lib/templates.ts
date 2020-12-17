@@ -1,9 +1,7 @@
 import { ParsedUrlQuery } from 'querystring';
 import { GetStaticPropsContext } from 'next';
+import hljs from 'highlight.js';
 import { TemplateEntryField } from '../interfaces/template';
-
-// getStaticProps 等のビルド時に実行される関数以外からは呼ばないように注意
-// (getStaticProps は デプロイされるときに bundle されないはずだが、明記されたところは見たいことないような。。。)
 
 function getFieldsQueryParams(fileds: string[]): string {
   const q = new URLSearchParams('');
@@ -99,11 +97,12 @@ export async function getTemplateData({
     // console.log(res.data.series);
     // Combine the data with the id and contentHtml
     if (res.ok) {
-      const data = (await res.json()) || { series: [] };
+      const data = (await res.json()) || {};
       return {
         id: data.id,
         label: data.label,
-        template: data.template
+        template: data.template,
+        templatehigHlighted: hljs.highlightAuto(data.template).value
       };
     } else {
       console.error(`getTemplateData error: ${res.statusText}`);
