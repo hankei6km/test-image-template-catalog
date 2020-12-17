@@ -69,7 +69,7 @@ const Layout = ({
                 href="/"
               >
                 <Box>
-                  <Typography variant="body1" color="textPrimary">
+                  <Typography variant="h6" color="textPrimary">
                     {`${process.env.APP_NAME}`}
                   </Typography>
                 </Box>
