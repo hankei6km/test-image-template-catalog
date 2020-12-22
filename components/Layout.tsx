@@ -5,7 +5,6 @@ import Link from '../components/Link';
 import AppBar from '@material-ui/core/AppBar';
 import Box from '@material-ui/core/Box';
 import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme) => ({
@@ -62,19 +61,21 @@ const Layout = ({
         <Toolbar>
           <Box className={classes.title}>
             <Box>
-              <Button
-                aria-label="page title"
-                disabled={home}
-                style={{ textTransform: 'none' }}
-                component={Link}
-                href="/"
-              >
+              {home ? (
                 <Box>
                   <Typography variant="h6" color="textPrimary">
                     {`${process.env.APP_NAME}`}
                   </Typography>
                 </Box>
-              </Button>
+              ) : (
+                <Link aria-label="page title" underline="none" href="/">
+                  <Box>
+                    <Typography variant="h6" color="textPrimary">
+                      {`${process.env.APP_NAME}`}
+                    </Typography>
+                  </Box>
+                </Link>
+              )}
             </Box>
           </Box>
         </Toolbar>
