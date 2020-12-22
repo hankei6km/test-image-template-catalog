@@ -37,6 +37,7 @@ const EnterImageUrl = ({
   return (
     <Box className={classes.root}>
       <TextField
+        id="enter-image-url"
         label="Enter image url"
         fullWidth
         value={inputValue}
