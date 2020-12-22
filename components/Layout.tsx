@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     // maxWidth: '36rem',
     // padding: '0 1rem',
     width: '100%',
-    margin: '0rem auto 0rem'
+    margin: '0rem auto 2rem'
   },
   title: {
     width: '100%',
@@ -81,10 +81,6 @@ const Layout = ({
       <Box className={classes.content}>
         <Box>{children}</Box>
       </Box>
-      <footer>
-        <hr />
-        <span>I'm here to stay (Footer)</span>
-      </footer>
     </div>
   );
 };
