@@ -63,6 +63,7 @@ const Layout = ({
           <Box className={classes.title}>
             <Box>
               <Button
+                aria-label="page title"
                 disabled={home}
                 style={{ textTransform: 'none' }}
                 component={Link}
