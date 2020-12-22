@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
 import TextField from '@material-ui/core/TextField';
+import DoneIcon from '@material-ui/icons/Done';
+import ClearIcon from '@material-ui/icons/Clear';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     alignItems: 'center',
     '& > .MuiBox-root': {
+      display: 'flex',
       paddingLeft: theme.spacing(1)
     }
   }
@@ -46,17 +49,27 @@ const EnterImageUrl = ({
         }}
       />
       <Box>
-        <Button
-          variant="contained"
-          disableElevation={true}
-          color="default"
-          onClick={() => {
-            setInputValue('');
-            setImageUrl('');
-          }}
-        >
-          Clear
-        </Button>
+        <Box>
+          <IconButton
+            aria-label="enter"
+            color="default"
+            onClick={() => setImageUrl(inputValue)}
+          >
+            <DoneIcon color="primary" />
+          </IconButton>
+        </Box>
+        <Box>
+          <IconButton
+            aria-label="clear"
+            color="default"
+            onClick={() => {
+              setInputValue('');
+              setImageUrl('');
+            }}
+          >
+            <ClearIcon />
+          </IconButton>
+        </Box>
       </Box>
     </Box>
   );
