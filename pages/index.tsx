@@ -35,13 +35,13 @@ const IndexPage = ({
           </Box>
           <Box>
             {allPostsData.map((v) => (
-              <Box key={v.id}>
+              <Box py={1} key={v.id}>
                 <Card elevation={1}>
                   <CardHeader
                     titleTypographyProps={{ variant: 'body2' }}
                     title={v.label}
                   />
-                  <CardActionArea component={Link} href={`/templates/${v.id}`}>
+                  <CardActionArea component={Link} href={`/templates/${v.id}`} aria-label="link to template deatil">
                     <Box className={classes.previewOuter}>
                       <TemplatePreview
                         template={v.template}

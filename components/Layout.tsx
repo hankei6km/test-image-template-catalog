@@ -5,7 +5,6 @@ import Link from '../components/Link';
 import AppBar from '@material-ui/core/AppBar';
 import Box from '@material-ui/core/Box';
 import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme) => ({
@@ -13,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     // maxWidth: '36rem',
     // padding: '0 1rem',
     width: '100%',
-    margin: '0rem auto 0rem'
+    margin: '0rem auto 2rem'
   },
   title: {
     width: '100%',
@@ -62,18 +61,21 @@ const Layout = ({
         <Toolbar>
           <Box className={classes.title}>
             <Box>
-              <Button
-                disabled={home}
-                style={{ textTransform: 'none' }}
-                component={Link}
-                href="/"
-              >
+              {home ? (
                 <Box>
-                  <Typography variant="body1" color="textPrimary">
-                    Image Template Catalog
+                  <Typography variant="h6" color="textPrimary">
+                    {`${process.env.APP_NAME}`}
                   </Typography>
                 </Box>
-              </Button>
+              ) : (
+                <Link aria-label="page title" underline="none" href="/">
+                  <Box>
+                    <Typography variant="h6" color="textPrimary">
+                      {`${process.env.APP_NAME}`}
+                    </Typography>
+                  </Box>
+                </Link>
+              )}
             </Box>
           </Box>
         </Toolbar>
@@ -81,10 +83,6 @@ const Layout = ({
       <Box className={classes.content}>
         <Box>{children}</Box>
       </Box>
-      <footer>
-        <hr />
-        <span>I'm here to stay (Footer)</span>
-      </footer>
     </div>
   );
 };
